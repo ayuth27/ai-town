@@ -45,8 +45,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
-          # Checkov and jscpd scan the whole repository rather than only the
-          # changed files, so they fail on pre-existing code. Keep the lint
-          # job scoped to what each push or PR actually changes.
-          VALIDATE_CHECKOV: false
+          # jscpd stays off: the remaining duplicates live in engine code
+          # shared with upstream a16z-infra/ai-town; see
+          # .github/linters/.jscpd.json for the scoped config kept for local
+          # runs.
           VALIDATE_JSCPD: false
+          # One formatter per language: pyink competes with black, and the
+          # "standard" style competes with prettier. Pylint is skipped because
+          # ruff and flake8 already lint Python, and pylint's defaults flag
+          # style and complexity in code a change does not touch.
+          VALIDATE_PYTHON_PYINK: false
+          VALIDATE_PYTHON_PYLINT: false
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_TYPESCRIPT_STANDARD: false

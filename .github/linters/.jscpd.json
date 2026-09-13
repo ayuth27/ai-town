@@ -1,0 +1,17 @@
+{
+  "threshold": 0,
+  "reporters": ["consoleFull"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/.venv/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/src/editor/**",
+    "**/data/**",
+    "**/assets/**",
+    "**/convex/util/FastIntegerCompression.ts",
+    "**/*.test.ts",
+    "**/*.md"
+  ]
+}
